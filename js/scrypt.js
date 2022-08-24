@@ -11,4 +11,20 @@ const cthulthu = document.getElementById('cthulthu');
 const iogSothoth = document.getElementById('iogsothoth');
 const ShubNiggurath = document.getElementById('shubniggurath');
 
+const ancients = document.querySelectorAll('ancients');
+
+let chosenAncient;
+let currentAncient = [];
 //Active cards
+ancients.forEach((element, index) => {
+    element.addEventListener('click', (e) => {
+        ancients.forEach(element => {
+            element.classList.remove('active');
+        });
+        element.classList.add('active');
+        chosenAncient = index;
+        currentAncient.length = 0; 
+
+    });
+});
+
