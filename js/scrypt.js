@@ -1,7 +1,7 @@
 console.log('Hello Word!');
 //Import JS date file 
 import difficulties from '../data/difficulties.js';
-import ancientsdate from '../data/ancients.js';
+import ancientsDate from '../data/ancients.js';
 import blueCards from '../data/mythicCards/blue/index.js';
 import brownCards from '../data/mythicCards/brown/index.js';
 import greenCards from '../data/mythicCards/green/index.js';
@@ -17,6 +17,7 @@ const difficult = document.querySelectorAll('.buttons__iteam');
 
 
 //Active cards
+
 let chosenAncient;
 let currentAncient =[];
 ancients.forEach((element, index) => {
@@ -28,10 +29,10 @@ ancients.forEach((element, index) => {
       levels.style.visibility = `visible`;
       chosenAncient = index;
       currentAncient.length = 0;
-      
       }
     );
 });
+
 //difficult 
 let chosenDiffucalty;
 
@@ -44,7 +45,12 @@ difficult.forEach((element ,index) => {
       e.target.classList.add('active');
     });
   });
-
+//Random number 
+  function getRandomNum(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 
 
