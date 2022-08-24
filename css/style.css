@@ -29,18 +29,19 @@ h6 {
 }
 html,
 body {
-	height: 100%;
+	
 	line-height: 1;
 	background: #fafafa;
-	font-size: 14px;
-	color: #252b42;
+	font-size: 20px;
+	color: #bbc5eb;
 	font-weight: 500;
 	font-family: Montserrat;
 }
 /*--------body--------*/
 body {
     max-width: 1440px;
-    background-image: url('/assets/home.png');
+    
+    background: url('../assets/home.png');
     background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover; 
@@ -49,10 +50,14 @@ body {
 .ancients {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 .ancients__item {
     width: 300px;
+    height: auto;
     cursor: pointer;
+    margin-top: 7px;
+    
 }
 /*---------button---------*/
 .levels__buttons {
@@ -92,6 +97,7 @@ body {
 .deck__container {
     margin-top: 25px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     -webkit-box-align: center;
     height: 50%;
@@ -169,4 +175,11 @@ body {
 .last__card {
     height: 335px;
     width: 228px;
+}
+/*-----------------*/
+.active {
+    visibility: visible;
+};
+.border {
+    border: solid 2px red;
 }
