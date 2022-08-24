@@ -179,6 +179,10 @@ body {
 .last__card {
     height: 335px;
     width: 228px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    cursor: pointer;
 }
 /*-----------------*/
 .active {

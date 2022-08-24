@@ -1,7 +1,7 @@
 console.log('Hello Word!');
 //Import JS date file 
 import difficulties from '../data/difficulties.js';
-import ancientsDate from '../data/ancients.js';
+import ancientsData from '../data/ancients.js';
 import blueCards from '../data/mythicCards/blue/index.js';
 import brownCards from '../data/mythicCards/brown/index.js';
 import greenCards from '../data/mythicCards/green/index.js';
@@ -29,9 +29,12 @@ ancients.forEach((element, index) => {
       levels.style.visibility = `visible`;
       chosenAncient = index;
       currentAncient.length = 0;
+      //использовать index для идентификации выбора 
+      
       }
     );
 });
+console.log(chosenAncient);//test!!!
 
 //difficult 
 let chosenDiffucalty;
@@ -45,12 +48,20 @@ difficult.forEach((element ,index) => {
       e.target.classList.add('active');
     });
   });
+
+
 //Random number 
   function getRandomNum(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+//Last card 
+const lastCard = document.querySelector('.last__card');
+
+lastCard.style.background = `url('${greenCards[0].cardFace}')`;
+//Dots data 
 
 
 
