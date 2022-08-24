@@ -1,0 +1,172 @@
+/* Обнуление */
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+a {
+	text-decoration: none;
+}
+ul,
+ol,
+li {
+	list-style: none;
+}
+img {
+	vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: inherit;
+	font-size: inherit;
+}
+html,
+body {
+	height: 100%;
+	line-height: 1;
+	background: #fafafa;
+	font-size: 14px;
+	color: #252b42;
+	font-weight: 500;
+	font-family: Montserrat;
+}
+/*--------body--------*/
+body {
+    max-width: 1440px;
+    background-image: url('/assets/home.png');
+    background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover; 
+}
+
+.ancients {
+    display: flex;
+    justify-content: space-around;
+}
+.ancients__item {
+    width: 300px;
+    cursor: pointer;
+}
+/*---------button---------*/
+.levels__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 15px;
+    visibility: visible; 
+    margin-bottom: 15px;   
+}
+.buttons__iteam {
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    font-style: italic;
+    font-size: large;    
+}
+.shuffle__button button{
+    display: flex;
+    
+    margin: 0 auto;
+    
+    text-align: center;
+    font-size: larger;
+    text-justify: auto;
+}
+.shuffle__button button {
+    min-width: 100px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: rgb(124, 110, 48);
+    
+}
+/*---------deck---------*/
+.deck__container {
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+    -webkit-box-align: center;
+    height: 50%;
+    visibility: visible;
+}
+.current__stage {
+    display: flex;
+    -webkit-box-orient: vertical;
+    align-items: center;
+    height: 40%;
+    flex-direction: column;
+}
+.stage__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.stage__text {
+    margin: 7px;
+    color: aliceblue;
+    font-size: 20px;
+}
+.dots__container {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+.dot {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: wheat;
+}
+.first__green {
+}
+.green {
+    background-color: green;
+}
+.first__brown {
+}
+.brown {
+    background-color: brown;
+}
+.first__blue {
+}
+.blue {
+    background-color: blue;
+}
+.second__green {
+}
+.second__brown {
+}
+.second__blue {
+}
+.third__green {
+}
+.third__brown {
+}
+.third__blue {
+}
+/*---------deck--------*/
+.deck {
+    height: 335px;
+    width: 228px;
+    cursor: pointer;
+    background-image: url('/assets/mythicCardBackground.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.last__card {
+    height: 335px;
+    width: 228px;
+}

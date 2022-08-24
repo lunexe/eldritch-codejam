@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eldritch Horror</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/font.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <main>
+        <div class="ancients">
+            <img class="ancients__item" src="assets/Ancients/Azathoth.png" alt="Azathoth" id="azathoth">
+            <img class="ancients__item" src="assets/Ancients/Cthulthu.png" alt="Cthulthu" id="cthulthu">
+            <img class="ancients__item" src="assets/Ancients/IogSothoth.png" alt="IogSothoth" id="iogsothoth">
+            <img class="ancients__item" src="assets/Ancients/ShubNiggurath.png" alt="ShubNiggurath" id="shubniggurath">
+        </div>
+        <div class="levels__buttons">
+            <button class="buttons__iteam" id="very__low">Very Low</button>
+            <button class="buttons__iteam" id="low">Low</button>
+            <button class="buttons__iteam" id="middle">Middle</button>
+            <button class="buttons__iteam" id="high">High</button>
+            <button class="buttons__iteam" id="very__high">Very High</button>
+        </div>
+        <div class="shuffle__button">
+            <button>Shuffle</button>
+        </div>
+        <div class="deck__container">
+            <div class="current__stage">
+                <div class="stage__container">
+                    <span class="stage__text">First Stage</span>
+                    <div class="dots__container">
+                        <div class="dot first__green green">1</div>
+                        <div class="dot first__brown brown">2</div>
+                        <div class="dot first__blue blue">3</div>
+                    </div>
+                </div>
+                <div class="stage__container">
+                    <span class="stage__text">Second Stage</span>
+                    <div class="dots__container">
+                        <div class="dot second__green green">1</div>
+                        <div class="dot second__brown brown">2</div>
+                        <div class="dot second__blue blue">3</div>
+                    </div>
+                </div>
+                <div class="stage__container">
+                    <span class="stage__text">Third Stage</span>
+                    <div class="dots__container">
+                        <div class="dot third__green green">1</div>
+                        <div class="dot third__brown brown">2</div>
+                        <div class="dot third__blue blue">3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="deck"></div>
+            <div class="last__card"></div>
+        </div>
+    </main>
+    <script type="module" src="js/scrypt.js"></script>
+    
+</body>
+</html>
