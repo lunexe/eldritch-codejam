@@ -9,22 +9,42 @@ import greenCards from '../data/mythicCards/green/index.js';
 const azathoth = document.getElementById('azathoth');
 const cthulthu = document.getElementById('cthulthu');
 const iogSothoth = document.getElementById('iogsothoth');
-const ShubNiggurath = document.getElementById('shubniggurath');
+const shubNiggurath = document.getElementById('shubniggurath');
 
-const ancients = document.querySelectorAll('ancients');
+const ancients = document.querySelectorAll('.ancients__item');
+const levels = document.querySelector('.levels__buttons');
+const difficult = document.querySelectorAll('.buttons__iteam');
 
-let chosenAncient;
-let currentAncient = [];
+
 //Active cards
+let chosenAncient;
+let currentAncient =[];
 ancients.forEach((element, index) => {
     element.addEventListener('click', (e) => {
         ancients.forEach(element => {
-            element.classList.remove('active');
-        });
-        element.classList.add('active');
-        chosenAncient = index;
-        currentAncient.length = 0; 
-
+        element.style.border = "none";
     });
+      element.style.border = "solid 2px red";
+      levels.style.visibility = `visible`;
+      chosenAncient = index;
+      currentAncient.length = 0;
+      
+      }
+    );
 });
+//difficult 
+let chosenDiffucalty;
+
+difficult.forEach((element ,index) => {
+    element.addEventListener('click', (e) => {
+      difficult.forEach(element => {
+        element.classList.remove('active');
+      });
+      chosenDiffucalty = index;
+      e.target.classList.add('active');
+    });
+  });
+
+
+
 

@@ -51,6 +51,7 @@ body {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    
 }
 .ancients__item {
     width: 300px;
@@ -59,13 +60,16 @@ body {
     margin-top: 7px;
     
 }
+
+    
+
 /*---------button---------*/
 .levels__buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-top: 15px;
-    visibility: visible; 
+    visibility: hidden; 
     margin-bottom: 15px;   
 }
 .buttons__iteam {
@@ -178,7 +182,7 @@ body {
 }
 /*-----------------*/
 .active {
-    visibility: visible;
+    background-color: rgb(241, 165, 72);
 };
 .border {
     border: solid 2px red;
