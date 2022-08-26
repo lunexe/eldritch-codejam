@@ -183,6 +183,10 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     cursor: pointer;
+    margin-bottom: 15px;
+}
+.deck__container {
+    
 }
 /*-----------------*/
 .active {

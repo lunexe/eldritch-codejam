@@ -6,6 +6,7 @@ import blueCards from '../data/mythicCards/blue/index.js';
 import brownCards from '../data/mythicCards/brown/index.js';
 import greenCards from '../data/mythicCards/green/index.js';
 
+
 //Const_date 
 const azathoth = document.getElementById('azathoth');
 const cthulthu = document.getElementById('cthulthu');
@@ -38,8 +39,8 @@ ancients.forEach((element, index) => {
       currentAncient.length = 0;
       //использовать index для идентификации выбора 
       currentAncient.push(ancientsData[chosenAncient].firstStage, ancientsData[chosenAncient].secondStage, ancientsData[chosenAncient].thirdStage);
-      }
-    );
+  
+});
 });
 console.log(chosenAncient);//test!!!
 
@@ -58,13 +59,13 @@ difficult.forEach((element ,index) => {
       let blueCards;
       let brownCards;
       if (index == 0){
-        greenCards = greenCards.filter(element => element.difficulty == 'easy');
-        blueCards = blueCards.filter(element => element.difficulty == 'easy');
-        brownCards = brownCards.filter(element => element.difficulty == 'easy');
+        greenCards = currentColode.greenCards.filter(element => element.difficulty == 'easy');
+        blueCards = currentColode.blueCards.filter(element => element.difficulty == 'easy');
+        brownCards = currentColode.brownCards.filter(element => element.difficulty == 'easy');
       } else if (index == 1){
-        greenCards = greenCards.filter(element => element.difficulty == "normal");
-        blueCards = blueCards.filter(element => element.difficulty == "normal");
-        brownCards = brownCards.filter(element => element.difficulty == "normal");
+        greenCards = currentColode.greenCards.filter(element => element.difficulty == "normal");
+        blueCards = currentColode.blueCards.filter(element => element.difficulty == "normal");
+        brownCards = currentColode.brownCards.filter(element => element.difficulty == "normal");
       }
         
     });
@@ -102,13 +103,6 @@ shufflButton.addEventListener('click', () => {
 });
 
 
-
-
-
-
-
-
-
 //Random number 
   function getRandomNum(min, max) {
     min = Math.ceil(min);
@@ -121,6 +115,5 @@ const lastCard = document.querySelector('.last__card');
 
 lastCard.style.background = `url('${greenCards[0].cardFace}')`;
 //Dots data 
-
 
 
