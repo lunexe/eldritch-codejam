@@ -1,3 +1,4 @@
+import cardsData from "../../../js/cardsdata";
 
 const brownCards = [
   {
@@ -128,4 +129,4 @@ const brownCards = [
   },
 ]
 
-export default brownCards;
+export default cardsData;

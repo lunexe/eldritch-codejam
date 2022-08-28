@@ -307,4 +307,4 @@ const cardsData = [
     }
   ]
   
-  export default cardsData
+  export default cardsData;

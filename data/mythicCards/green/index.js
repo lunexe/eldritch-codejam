@@ -1,3 +1,4 @@
+import cardsData from "../brown";
 
 const greenCards = [
   {
@@ -110,4 +111,4 @@ const greenCards = [
   },
 ]
 
-export default greenCards;
+export default cardsData;
