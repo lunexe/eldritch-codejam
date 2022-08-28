@@ -5,6 +5,7 @@ import ancientsData from '../data/ancients.js';
 import blueCards from '../data/mythicCards/blue/index.js';
 import brownCards from '../data/mythicCards/brown/index.js';
 import greenCards from '../data/mythicCards/green/index.js';
+import cards from '../js/cardsdata.js';//all cards 
 
 
 //Const_date 
@@ -28,6 +29,7 @@ const shufflButton = document.querySelector('.shuffle__button');
 
 let chosenAncient;
 let currentAncient =[];
+let currentColode = {};
 ancients.forEach((element, index) => {
     element.addEventListener('click', (e) => {
         ancients.forEach(element => {
@@ -46,7 +48,7 @@ console.log(chosenAncient);//test!!!
 
 //difficult 
 let chosenDiffucalty;
-let currentColode ={};
+
 
 difficult.forEach((element ,index) => {
     element.addEventListener('click', (e) => {
@@ -55,22 +57,24 @@ difficult.forEach((element ,index) => {
       });
       chosenDiffucalty = index;
       e.target.classList.add('active');
-      let greenCards;
-      let blueCards;
-      let brownCards;
-      if (index == 0){
-        greenCards = currentColode.greenCards.filter(element => element.difficulty == 'easy');
-        blueCards = currentColode.blueCards.filter(element => element.difficulty == 'easy');
-        brownCards = currentColode.brownCards.filter(element => element.difficulty == 'easy');
-      } else if (index == 1){
-        greenCards = currentColode.greenCards.filter(element => element.difficulty == "normal");
-        blueCards = currentColode.blueCards.filter(element => element.difficulty == "normal");
-        brownCards = currentColode.brownCards.filter(element => element.difficulty == "normal");
+      let arrGreenCards;
+      let arrBrownCards;
+      let arrBlueCards;
+      if (index === 0) {
+        arrGreenCards = greenCards.filter(element => element.difficulty === 'easy');
+        arrBrownCards = brownCards.filter(element => element.difficulty === 'easy');
+        arrBlueCards = blueCards.filter(element => element.difficulty === 'easy');
+      } else if  (index === 1) {
+        arrGreenCards = greenCards.filter(element => element.difficulty === 'normal');
+        arrBrownCards = brownCards.filter(element => element.difficulty === 'normal');
+        arrBlueCards = blueCards.filter(element => element.difficulty === 'normal');
       }
-        
+      currentColode.greenCards = arrGreenCards;
+      currentColode.brownCards = arrBrownCards;
+      currentColode.blueCards = arrBlueCards;
     });
   });
-console.log(currentColode.greenCards);
+ let colode = [];
 
 
 //Dots 
@@ -82,11 +86,14 @@ let allGreen = 0;
 let allBlue = 0;
 let allBrown =0;
 
-let colode = [];
 shufflButton.addEventListener('click', () => {
     allGreen = 0;
     allBrown = 0;
     allBlue = 0;
+
+    let greensArr = [];
+    let brownsArr = [];
+    let bluesArr = [];
     greens.forEach((el, id) => {
         el.textContent = currentAncient[id].greenCards;
         allGreen = allGreen + Number(el.textContent);
@@ -99,9 +106,13 @@ shufflButton.addEventListener('click', () => {
         el.textContent = currentAncient[id].blueCards;
         allBlue = allBlue + Number(el.textContent);
       });
-
+      for (let i=0; i < allGreen; i++) {
+        const random = Math.floor(Math.random()*2);
+        
+      }
+      console.log(greensArr);
 });
-
+// 
 
 //Random number 
   function getRandomNum(min, max) {
@@ -109,11 +120,12 @@ shufflButton.addEventListener('click', () => {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+//
 
 //Last card 
 const lastCard = document.querySelector('.last__card');
 
-lastCard.style.background = `url('${greenCards[0].cardFace}')`;
+
 //Dots data 
 
 
