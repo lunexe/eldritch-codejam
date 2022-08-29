@@ -49,9 +49,11 @@ ancients.forEach((element, index) => {
     element.addEventListener('click', (e) => {
         ancients.forEach(element => {
         element.style.border = "none";
+        element.style.display = 'none';
     });
       element.style.border = "solid 2px red";
       levels.style.visibility = `visible`;
+      e.target.style.display = 'block';
       chosenAncient = index;
       currentAncient.length = 0;
       //использовать index для идентификации выбора 
@@ -72,10 +74,12 @@ let chosenDiffucalty = 1;
 difficult.forEach((element ,index) => {
     element.addEventListener('click', (e) => {
       difficult.forEach(element => {
-        element.classList.remove('active'); 
+        element.classList.remove('active');
+        element.style.display = 'none'; 
       });
       chosenDiffucalty = index;
       e.target.classList.add('active');
+      e.target.style.display = 'block';
       let arrGreenCards;
       let arrBrownCards;
       let arrBlueCards;
@@ -287,6 +291,7 @@ colodeBtn.addEventListener('click', () => {
     } else if (colode[0].length === 1) {
         colodeBtn.style.visibility = `hidden`;
         
+        
         url = colode[0][0];
         if (url.color === 'green') {
             thirdGreen.textContent = `${Number(thirdGreen.textContent) - 1}`;
@@ -294,7 +299,7 @@ colodeBtn.addEventListener('click', () => {
             thirdBlue.textContent = `${Number(thirdBlue.textContent) - 1}`;
         } else if (url.color === 'brown') {
             thirdBrown.textContent = `${Number(thirdBrown.textContent) - 1}`;
-        } alert('Please, Reload pages!');
+        } 
     } 
  
    

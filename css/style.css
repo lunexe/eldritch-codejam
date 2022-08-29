@@ -38,8 +38,13 @@ body {
 	font-family: Montserrat;
 }
 /*--------body--------*/
+main{
+    
+}
 body {
-    max-width: 1440px;
+    min-width: 480px;
+    min-height: 100vh;
+    
     
     background: url('../assets/home.png');
     background-repeat: no-repeat;
@@ -88,15 +93,13 @@ body {
     text-align: center;
     font-size: larger;
     text-justify: auto;
-}
-.shuffle__button button {
     min-width: 100px;
     height: 30px;
     cursor: pointer;
     border-radius: 10px;
-    background-color: rgb(124, 110, 48);
-    
+    background-color: rgb(218, 197, 104);
 }
+
 /*---------deck---------*/
 .deck__container {
     margin-top: 25px;
