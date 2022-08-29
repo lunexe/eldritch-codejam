@@ -80,9 +80,9 @@ difficult.forEach((element ,index) => {
       let arrBrownCards;
       let arrBlueCards;
       if (index === 0) {
-        arrGreenCards = card.filter(element => element.difficulty === 'easy', 'normal' && element.color === 'green');
-        arrBrownCards = card.filter(element => element.difficulty === 'easy', 'normal' && element.color === 'brown');
-        arrBlueCards = card.filter(element => element.difficulty === 'easy', 'normal' && element.color === 'blue');
+        arrGreenCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'green');
+        arrBrownCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'brown');
+        arrBlueCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'blue');
        
       } else if  (index === 1) {
         arrGreenCards = card.filter(element => element.difficulty === 'normal' && element.color === 'green');
