@@ -197,3 +197,6 @@ body {
 .border {
     border: solid 2px red;
 }
+.hiden {
+    visibility: hidden;
+}

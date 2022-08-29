@@ -80,23 +80,27 @@ difficult.forEach((element ,index) => {
       let arrBrownCards;
       let arrBlueCards;
       if (index === 0) {
+        arrGreenCards = card.filter(element => element.difficulty === 'easy' && element.color === 'green' || element.difficulty === 'normal' && element.color === 'green');
+        arrBrownCards = card.filter(element => element.difficulty === 'easy' && element.color === 'brown' || element.difficulty === 'normal' && element.color === 'brown');
+        arrBlueCards = card.filter(element => element.difficulty === 'easy' && element.color === 'blue' || element.difficulty === 'normal' && element.color === 'blue');
+       
+      } else if  (index === 1) {
         arrGreenCards = card.filter(element => element.difficulty !== 'hard' && element.color === 'green');
         arrBrownCards = card.filter(element => element.difficulty !== 'hard' && element.color === 'brown');
         arrBlueCards = card.filter(element => element.difficulty !== 'hard' && element.color === 'blue');
-       
-      } else if  (index === 1) {
-        arrGreenCards = card.filter(element => element.difficulty === 'normal' && element.color === 'green');
-        arrBrownCards = card.filter(element => element.difficulty === 'normal' && element.color === 'brown');
-        arrBlueCards = card.filter(element => element.difficulty === 'normal' && element.color === 'blue');
       } else if (index === 2) {
         arrGreenCards = card.filter(element => element.color === 'green');
         arrBrownCards = card.filter(element => element.color === 'brown');
         arrBlueCards = card.filter(element => element.color === 'blue');
         //console.log(arrGreenCards);
       } else if (index === 3) {
-        arrGreenCards = card.filter(element => element.color !== 'easy' && element.color === 'green');
-        arrBrownCards = card.filter(element => element.color !== 'easy'&& element.color === 'brown');
-        arrBlueCards = card.filter(element => element.color !== 'easy'&& element.color === 'blue');
+        arrGreenCards = card.filter(element => element.difficulty !== 'easy' && element.color === 'green');
+        arrBrownCards = card.filter(element => element.difficulty !== 'easy'&& element.color === 'brown');
+        arrBlueCards = card.filter(element => element.difficulty !== 'easy'&& element.color === 'blue');
+      } else if (index === 4) {
+        arrGreenCards = card.filter(element => element.difficulty === 'hard' && element.color === 'green' || element.difficulty === 'normal' && element.color === 'green');
+        arrBrownCards = card.filter(element => element.difficulty === 'hard' && element.color === 'brown'|| element.difficulty === 'normal' && element.color === 'brown');
+        arrBlueCards = card.filter(element => element.difficulty === 'hard' && element.color === 'blue' || element.difficulty === 'normal' && element.color === 'blue');
       }
       currentColode.greenCards = arrGreenCards;
       currentColode.brownCards = arrBrownCards;
@@ -225,7 +229,7 @@ colode = [thirdDeck, secondDeck, firstDeck];
 console.log(colode);
 
 
-console.log(firstDeck);
+//console.log(firstDeck);
 //console.log(secondDeck);
 //console.log(thirdDeck);
 
@@ -282,6 +286,7 @@ colodeBtn.addEventListener('click', () => {
         colode[0].shift();
     } else if (colode[0].length === 1) {
         colodeBtn.style.visibility = `hidden`;
+        
         url = colode[0][0];
         if (url.color === 'green') {
             thirdGreen.textContent = `${Number(thirdGreen.textContent) - 1}`;
@@ -289,9 +294,12 @@ colodeBtn.addEventListener('click', () => {
             thirdBlue.textContent = `${Number(thirdBlue.textContent) - 1}`;
         } else if (url.color === 'brown') {
             thirdBrown.textContent = `${Number(thirdBrown.textContent) - 1}`;
-        } 
-    }
+        } alert('Please, Reload pages!');
+    } 
+ 
+   
     lastCard.style.background = `no-repeat center/cover url('${url.cardFace}')`;
+    
     //console.log(url);
 });
 
