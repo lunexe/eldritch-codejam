@@ -72,7 +72,7 @@ let chosenDiffucalty = 1;
 difficult.forEach((element ,index) => {
     element.addEventListener('click', (e) => {
       difficult.forEach(element => {
-        element.classList.remove('active');
+        element.classList.remove('active'); 
       });
       chosenDiffucalty = index;
       e.target.classList.add('active');
@@ -93,6 +93,10 @@ difficult.forEach((element ,index) => {
         arrBrownCards = card.filter(element => element.color === 'brown');
         arrBlueCards = card.filter(element => element.color === 'blue');
         //console.log(arrGreenCards);
+      } else if (index === 3) {
+        arrGreenCards = card.filter(element => element.color !== 'easy');
+        arrBrownCards = card.filter(element => element.color !== 'easy');
+        arrBlueCards = card.filter(element => element.color !== 'easy');
       }
       currentColode.greenCards = arrGreenCards;
       currentColode.brownCards = arrBrownCards;
@@ -132,23 +136,29 @@ shufflButton.addEventListener('click', () => {
     let greensArr = [];
     let brownsArr = [];
     let bluesArr = [];
+
+    let arrGreenCards;
+    let arrBrownCards;
+    let arrBlueCards;
+    let greenLow = [];
+  
     greens.forEach((el, id) => {
         el.textContent = currentAncient[id].greenCards;
-        allGreen = Number(allGreen) + Number(el.textContent);
+        allGreen = allGreen + Number(el.textContent);
         //console.log(allGreen);
     });
     browns.forEach((el, id) => {
         el.textContent = currentAncient[id].brownCards;
-        allBrown = Number(allBrown) + Number(el.textContent);
+        allBrown = allBrown + Number(el.textContent);
       });
       blues.forEach((el, id) => {
         el.textContent = currentAncient[id].blueCards;
-        allBlue = Number(allBlue) + Number(el.textContent);
+        allBlue = allBlue + Number(el.textContent);
       });
 for (let i = 0; i < allGreen; i++){
     const randomCard = Math.floor(Math.random()*currentColode.greenCards.length);
     greensArr.push(...currentColode.greenCards.splice(randomCard, 1));
-    //console.log(greensArr);
+    
 }
 for (let i = 0; i < allBrown; i++){
     const randomCard = Math.floor(Math.random()*currentColode.brownCards.length);
