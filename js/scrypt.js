@@ -33,7 +33,12 @@ const stThird = document.querySelectorAll('third');
 const colodeBtn = document.querySelector('.deck');
 const lastCard = document.querySelector('.last__card');
 
-
+//Random number 
+function getRandomNum(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 //Active cards
 
@@ -67,7 +72,7 @@ let chosenDiffucalty = 1;
 difficult.forEach((element ,index) => {
     element.addEventListener('click', (e) => {
       difficult.forEach(element => {
-        element.classList.remove('active');
+        element.classList.remove('active'); 
       });
       chosenDiffucalty = index;
       e.target.classList.add('active');
@@ -75,19 +80,27 @@ difficult.forEach((element ,index) => {
       let arrBrownCards;
       let arrBlueCards;
       if (index === 0) {
-        arrGreenCards = card.filter(element => element.difficulty === 'easy', 'normal' && element.color === 'green');
-        arrBrownCards = card.filter(element => element.difficulty === 'easy', 'normal' && element.color === 'brown');
-        arrBlueCards = card.filter(element => element.difficulty === 'easy', 'normal' && element.color === 'blue');
+        arrGreenCards = card.filter(element => element.difficulty === 'easy' && element.color === 'green' || element.difficulty === 'normal' && element.color === 'green');
+        arrBrownCards = card.filter(element => element.difficulty === 'easy' && element.color === 'brown' || element.difficulty === 'normal' && element.color === 'brown');
+        arrBlueCards = card.filter(element => element.difficulty === 'easy' && element.color === 'blue' || element.difficulty === 'normal' && element.color === 'blue');
        
       } else if  (index === 1) {
-        arrGreenCards = card.filter(element => element.difficulty === 'normal' && element.color === 'green');
-        arrBrownCards = card.filter(element => element.difficulty === 'normal' && element.color === 'brown');
-        arrBlueCards = card.filter(element => element.difficulty === 'normal'&& element.color === 'blue');
+        arrGreenCards = card.filter(element => element.difficulty !== 'hard' && element.color === 'green');
+        arrBrownCards = card.filter(element => element.difficulty !== 'hard' && element.color === 'brown');
+        arrBlueCards = card.filter(element => element.difficulty !== 'hard' && element.color === 'blue');
       } else if (index === 2) {
         arrGreenCards = card.filter(element => element.color === 'green');
         arrBrownCards = card.filter(element => element.color === 'brown');
         arrBlueCards = card.filter(element => element.color === 'blue');
         //console.log(arrGreenCards);
+      } else if (index === 3) {
+        arrGreenCards = card.filter(element => element.difficulty !== 'easy' && element.color === 'green');
+        arrBrownCards = card.filter(element => element.difficulty !== 'easy'&& element.color === 'brown');
+        arrBlueCards = card.filter(element => element.difficulty !== 'easy'&& element.color === 'blue');
+      } else if (index === 4) {
+        arrGreenCards = card.filter(element => element.difficulty === 'hard' && element.color === 'green' || element.difficulty === 'normal' && element.color === 'green');
+        arrBrownCards = card.filter(element => element.difficulty === 'hard' && element.color === 'brown'|| element.difficulty === 'normal' && element.color === 'brown');
+        arrBlueCards = card.filter(element => element.difficulty === 'hard' && element.color === 'blue' || element.difficulty === 'normal' && element.color === 'blue');
       }
       currentColode.greenCards = arrGreenCards;
       currentColode.brownCards = arrBrownCards;
@@ -127,6 +140,12 @@ shufflButton.addEventListener('click', () => {
     let greensArr = [];
     let brownsArr = [];
     let bluesArr = [];
+
+    let arrGreenCards;
+    let arrBrownCards;
+    let arrBlueCards;
+
+  //console.log(currentColode.greenCards);
     greens.forEach((el, id) => {
         el.textContent = currentAncient[id].greenCards;
         allGreen = allGreen + Number(el.textContent);
@@ -143,7 +162,7 @@ shufflButton.addEventListener('click', () => {
 for (let i = 0; i < allGreen; i++){
     const randomCard = Math.floor(Math.random()*currentColode.greenCards.length);
     greensArr.push(...currentColode.greenCards.splice(randomCard, 1));
-    //console.log(greensArr);
+    
 }
 for (let i = 0; i < allBrown; i++){
     const randomCard = Math.floor(Math.random()*currentColode.brownCards.length);
@@ -155,19 +174,21 @@ for (let i = 0; i < allBlue; i++){
     bluesArr.push(...currentColode.blueCards.splice(randomCard, 1));
     
 }
-
+//console.log(bluesArr);
+//console.log(greensArr);
+//console.log(brownsArr);
 let greenStagesOne = [];
 let greenStagesTwo = [];
 let greenStagesThree = [];
 
 for (let i = 0; i < Number(firstGreen.textContent); i++) {
-    greenStagesOne.push(greensArr[i]);
+    greenStagesOne.push(greensArr.pop());
 }
-for (let i = Number(firstGreen.textContent); i < (Number(secondGreen.textContent) + Number(firstGreen.textContent)); i++) {
-    greenStagesTwo.push(greensArr[i]);
+for (let i = 0; i < (Number(secondGreen.textContent)); i++) {
+    greenStagesTwo.push(greensArr.pop());
 }
-for (let i = (Number(secondGreen.textContent) + Number(firstGreen.textContent)); i <= (Number(secondGreen.textContent) + Number(firstGreen.textContent) + Number(thirdGreen.textContent)); i++) {
-    greenStagesThree.push(greensArr[i]);
+for (let i = 0; i < Number(thirdGreen.textContent); i++) {
+    greenStagesThree.push(greensArr.pop());
 }
 //console.log (greenStagesOne);
 //console.log (greenStagesTwo);
@@ -177,25 +198,25 @@ let blueStagesOne = [];
 let blueStagesTwo = [];
 let blueStagesThree =[];
 for (let i = 0; i < Number(firstBlue.textContent); i++) {
-    blueStagesOne.push(bluesArr[i]);
+    blueStagesOne.push(bluesArr.pop());
 }
-for (let i = Number(firstBlue.textContent); i < (Number(secondBlue.textContent) + Number(firstBlue.textContent)); i++) {
-    blueStagesTwo.push(bluesArr[i]);
+for (let i = 0; i < Number(secondBlue.textContent); i++) {
+    blueStagesTwo.push(bluesArr.pop());
 }
-for (let i = (Number(secondBlue.textContent) + Number(firstBlue.textContent)); i <= (Number(secondBlue.textContent) + Number(firstBlue.textContent) + Number(thirdBlue.textContent)); i++) {
-    blueStagesThree.push(bluesArr[i]);
+for (let i = 0; i < Number(thirdBlue.textContent); i++) {
+    blueStagesThree.push(bluesArr.pop());
 }
 let brownStagesOne = [];
 let brownStagesTwo = [];
 let brownStagesThree =[];
 for (let i = 0; i < Number(firstBrown.textContent); i++) {
-    brownStagesOne.push(brownsArr[i]);
+    brownStagesOne.push(brownsArr.pop());
 }
-for (let i = Number(firstBrown.textContent); i < (Number(secondBrown.textContent) + Number(firstBrown.textContent)); i++) {
-    brownStagesTwo.push(brownsArr[i]);
+for (let i = 0; i < Number(secondBrown.textContent); i++) {
+    brownStagesTwo.push(brownsArr.pop());
 }
-for (let i = (Number(secondBrown.textContent) + Number(firstBrown.textContent)); i <= (Number(secondBrown.textContent) + Number(firstBrown.textContent) + Number(thirdBrown.textContent)); i++) {
-    brownStagesThree.push(brownsArr[i]);
+for (let i = 0; i < Number(thirdBrown.textContent); i++) {
+    brownStagesThree.push(brownsArr.pop());
 }
 
 
@@ -205,7 +226,7 @@ let secondDeck = [...greenStagesTwo, ...blueStagesTwo, ...brownStagesTwo];
 let thirdDeck = [...greenStagesThree, ...blueStagesThree, ...brownStagesThree];
 
 colode = [thirdDeck, secondDeck, firstDeck];
-//console.log(colode[0]);
+console.log(colode);
 
 
 //console.log(firstDeck);
@@ -213,21 +234,28 @@ colode = [thirdDeck, secondDeck, firstDeck];
 //console.log(thirdDeck);
 
 });
+
 colodeBtn.addEventListener('click', () => {
     let url = '';
     if (colode[2].length !==0) {
-        let n = Math.floor(Math.random()*colode[2].length-1);
+        let n = getRandomNum (0, (colode[2].length-1));
         url = colode[2][n];
-        console.log(colode[0]);
+        
         if (url.color === 'green') {
             firstGreen.textContent = `${Number(firstGreen.textContent) - 1}`;
         } else if (url.color === 'blue') {
             firstBlue.textContent = `${Number(firstBlue.textContent) - 1}`;
         } else if (url.color === 'brown') {
             firstBrown.textContent = `${Number(firstBrown.textContent) - 1}`;
-        }       
+        } 
+        let temp = colode[2][n];
+        colode[2][n] = colode[2][0];
+        colode[2][0] = temp;
+
+        colode[2].shift();
+
     } else if (colode[1].length !== 0) {
-        let n = Math.floor(Math.random()*colode[1].length-1);
+        let n = getRandomNum (0, (colode[1].length-1));
         url = colode[1][n];
         if (url.color === 'green') {
             secondGreen.textContent = `${Number(secondGreen.textContent) - 1}`;
@@ -236,8 +264,13 @@ colodeBtn.addEventListener('click', () => {
         } else if (url.color === 'brown') {
             secondBrown.textContent = `${Number(secondBrown.textContent) - 1}`;
         } 
+        let temp = colode[1][n];
+        colode[1][n] = colode[1][0];
+        colode[1][0] = temp;
+        
+        colode[1].shift();
     } else if (colode[0].length > 1) {
-        let n = Math.floor(Math.random()*colode[0].length-1);
+        let n = getRandomNum (0, (colode[0].length-1));
         url = colode[0][n];
         if (url.color === 'green') {
             thirdGreen.textContent = `${Number(thirdGreen.textContent) - 1}`;
@@ -246,8 +279,14 @@ colodeBtn.addEventListener('click', () => {
         } else if (url.color === 'brown') {
             thirdBrown.textContent = `${Number(thirdBrown.textContent) - 1}`;
         } 
+        let temp = colode[0][n];
+        colode[0][n] = colode[0][0];
+        colode[0][0] = temp;
+        
+        colode[0].shift();
     } else if (colode[0].length === 1) {
         colodeBtn.style.visibility = `hidden`;
+        
         url = colode[0][0];
         if (url.color === 'green') {
             thirdGreen.textContent = `${Number(thirdGreen.textContent) - 1}`;
@@ -255,24 +294,17 @@ colodeBtn.addEventListener('click', () => {
             thirdBlue.textContent = `${Number(thirdBlue.textContent) - 1}`;
         } else if (url.color === 'brown') {
             thirdBrown.textContent = `${Number(thirdBrown.textContent) - 1}`;
-        } 
-    }
-    
-    
-    
-    
-    
+        } alert('Please, Reload pages!');
+    } 
+ 
+   
     lastCard.style.background = `no-repeat center/cover url('${url.cardFace}')`;
+    
     //console.log(url);
-})
+});
 
 
-//Random number 
-  function getRandomNum(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+
 //
 
 //Last card 
