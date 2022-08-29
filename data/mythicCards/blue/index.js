@@ -1,6 +1,6 @@
-import cardsData from "../brown"
 
-const blueCards = [
+
+const cardsData = [
   {
     id: 'blue1',
     cardFace: '../assets/MythicCards/blue/blue1.png',

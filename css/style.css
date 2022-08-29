@@ -184,6 +184,7 @@ body {
     background-repeat: no-repeat;
     cursor: pointer;
     margin-bottom: 15px;
+    background: url('');
 }
 .deck__container {
     
