@@ -175,6 +175,7 @@ body {
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    visibility: visible;
 }
 .last__card {
     height: 335px;

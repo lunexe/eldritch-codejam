@@ -33,7 +33,12 @@ const stThird = document.querySelectorAll('third');
 const colodeBtn = document.querySelector('.deck');
 const lastCard = document.querySelector('.last__card');
 
-
+//Random number 
+function getRandomNum(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 
 //Active cards
 
@@ -129,16 +134,16 @@ shufflButton.addEventListener('click', () => {
     let bluesArr = [];
     greens.forEach((el, id) => {
         el.textContent = currentAncient[id].greenCards;
-        allGreen = allGreen + Number(el.textContent);
+        allGreen = Number(allGreen) + Number(el.textContent);
         //console.log(allGreen);
     });
     browns.forEach((el, id) => {
         el.textContent = currentAncient[id].brownCards;
-        allBrown = allBrown + Number(el.textContent);
+        allBrown = Number(allBrown) + Number(el.textContent);
       });
       blues.forEach((el, id) => {
         el.textContent = currentAncient[id].blueCards;
-        allBlue = allBlue + Number(el.textContent);
+        allBlue = Number(allBlue) + Number(el.textContent);
       });
 for (let i = 0; i < allGreen; i++){
     const randomCard = Math.floor(Math.random()*currentColode.greenCards.length);
@@ -168,7 +173,7 @@ for (let i = 0; i < Number(firstGreen.textContent); i++) {
 for (let i = 0; i < (Number(secondGreen.textContent)); i++) {
     greenStagesTwo.push(greensArr.pop());
 }
-for (let i = 0; i <= Number(thirdGreen.textContent); i++) {
+for (let i = 0; i < Number(thirdGreen.textContent); i++) {
     greenStagesThree.push(greensArr.pop());
 }
 //console.log (greenStagesOne);
@@ -184,7 +189,7 @@ for (let i = 0; i < Number(firstBlue.textContent); i++) {
 for (let i = 0; i < Number(secondBlue.textContent); i++) {
     blueStagesTwo.push(bluesArr.pop());
 }
-for (let i = 0; i <= Number(thirdBlue.textContent); i++) {
+for (let i = 0; i < Number(thirdBlue.textContent); i++) {
     blueStagesThree.push(bluesArr.pop());
 }
 let brownStagesOne = [];
@@ -196,7 +201,7 @@ for (let i = 0; i < Number(firstBrown.textContent); i++) {
 for (let i = 0; i < Number(secondBrown.textContent); i++) {
     brownStagesTwo.push(brownsArr.pop());
 }
-for (let i = 0; i <= Number(thirdBrown.textContent); i++) {
+for (let i = 0; i < Number(thirdBrown.textContent); i++) {
     brownStagesThree.push(brownsArr.pop());
 }
 
@@ -210,28 +215,33 @@ colode = [thirdDeck, secondDeck, firstDeck];
 console.log(colode);
 
 
-console.log(firstDeck);
-console.log(secondDeck);
-console.log(thirdDeck);
+//console.log(firstDeck);
+//console.log(secondDeck);
+//console.log(thirdDeck);
 
 });
+
 colodeBtn.addEventListener('click', () => {
     let url = '';
     if (colode[2].length !==0) {
-        let n = Math.floor(Math.random()*colode[2].length-1);
+        let n = getRandomNum (0, (colode[2].length-1));
         url = colode[2][n];
-        console.log(colode[0]);
+        
         if (url.color === 'green') {
             firstGreen.textContent = `${Number(firstGreen.textContent) - 1}`;
         } else if (url.color === 'blue') {
             firstBlue.textContent = `${Number(firstBlue.textContent) - 1}`;
         } else if (url.color === 'brown') {
             firstBrown.textContent = `${Number(firstBrown.textContent) - 1}`;
-        } else if (url.color === 'undefined') {
-            console.log('hahahha');
-        }     
+        } 
+        let temp = colode[2][n];
+        colode[2][n] = colode[2][0];
+        colode[2][0] = temp;
+
+        colode[2].shift();
+
     } else if (colode[1].length !== 0) {
-        let n = Math.floor(Math.random()*colode[1].length-1);
+        let n = getRandomNum (0, (colode[1].length-1));
         url = colode[1][n];
         if (url.color === 'green') {
             secondGreen.textContent = `${Number(secondGreen.textContent) - 1}`;
@@ -240,8 +250,13 @@ colodeBtn.addEventListener('click', () => {
         } else if (url.color === 'brown') {
             secondBrown.textContent = `${Number(secondBrown.textContent) - 1}`;
         } 
+        let temp = colode[1][n];
+        colode[1][n] = colode[1][0];
+        colode[1][0] = temp;
+        
+        colode[1].shift();
     } else if (colode[0].length > 1) {
-        let n = Math.floor(Math.random()*colode[0].length-1);
+        let n = getRandomNum (0, (colode[0].length-1));
         url = colode[0][n];
         if (url.color === 'green') {
             thirdGreen.textContent = `${Number(thirdGreen.textContent) - 1}`;
@@ -250,6 +265,11 @@ colodeBtn.addEventListener('click', () => {
         } else if (url.color === 'brown') {
             thirdBrown.textContent = `${Number(thirdBrown.textContent) - 1}`;
         } 
+        let temp = colode[0][n];
+        colode[0][n] = colode[0][0];
+        colode[0][0] = temp;
+        
+        colode[0].shift();
     } else if (colode[0].length === 1) {
         colodeBtn.style.visibility = `hidden`;
         url = colode[0][0];
@@ -261,22 +281,12 @@ colodeBtn.addEventListener('click', () => {
             thirdBrown.textContent = `${Number(thirdBrown.textContent) - 1}`;
         } 
     }
-    
-    
-    
-    
-    
     lastCard.style.background = `no-repeat center/cover url('${url.cardFace}')`;
     //console.log(url);
 })
 
 
-//Random number 
-  function getRandomNum(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+
 //
 
 //Last card 
