@@ -80,23 +80,23 @@ difficult.forEach((element ,index) => {
       let arrBrownCards;
       let arrBlueCards;
       if (index === 0) {
-        arrGreenCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'green');
-        arrBrownCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'brown');
-        arrBlueCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'blue');
+        arrGreenCards = card.filter(element => element.difficulty !== 'hard' && element.color === 'green');
+        arrBrownCards = card.filter(element => element.difficulty !== 'hard' && element.color === 'brown');
+        arrBlueCards = card.filter(element => element.difficulty !== 'hard' && element.color === 'blue');
        
       } else if  (index === 1) {
         arrGreenCards = card.filter(element => element.difficulty === 'normal' && element.color === 'green');
         arrBrownCards = card.filter(element => element.difficulty === 'normal' && element.color === 'brown');
-        arrBlueCards = card.filter(element => element.difficulty === 'normal'&& element.color === 'blue');
+        arrBlueCards = card.filter(element => element.difficulty === 'normal' && element.color === 'blue');
       } else if (index === 2) {
         arrGreenCards = card.filter(element => element.color === 'green');
         arrBrownCards = card.filter(element => element.color === 'brown');
         arrBlueCards = card.filter(element => element.color === 'blue');
         //console.log(arrGreenCards);
       } else if (index === 3) {
-        arrGreenCards = card.filter(element => element.color !== 'easy');
-        arrBrownCards = card.filter(element => element.color !== 'easy');
-        arrBlueCards = card.filter(element => element.color !== 'easy');
+        arrGreenCards = card.filter(element => element.color !== 'easy' && element.color === 'green');
+        arrBrownCards = card.filter(element => element.color !== 'easy'&& element.color === 'brown');
+        arrBlueCards = card.filter(element => element.color !== 'easy'&& element.color === 'blue');
       }
       currentColode.greenCards = arrGreenCards;
       currentColode.brownCards = arrBrownCards;
@@ -140,12 +140,8 @@ shufflButton.addEventListener('click', () => {
     let arrGreenCards;
     let arrBrownCards;
     let arrBlueCards;
-    if (veryLowBtn.classList.contains('active') === true) {
-        currentColode.greenCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'green');
-        currentColode.brownCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'brown');
-        currentColode.blueCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'blue');
-    }
-  console.log(currentColode.greenCards);
+
+  //console.log(currentColode.greenCards);
     greens.forEach((el, id) => {
         el.textContent = currentAncient[id].greenCards;
         allGreen = allGreen + Number(el.textContent);
@@ -229,7 +225,7 @@ colode = [thirdDeck, secondDeck, firstDeck];
 console.log(colode);
 
 
-//console.log(firstDeck);
+console.log(firstDeck);
 //console.log(secondDeck);
 //console.log(thirdDeck);
 
