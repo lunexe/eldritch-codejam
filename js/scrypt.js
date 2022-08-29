@@ -204,7 +204,7 @@ let firstDeck = [...greenStagesOne, ...blueStagesOne, ...brownStagesOne];
 let secondDeck = [...greenStagesTwo, ...blueStagesTwo, ...brownStagesTwo];
 let thirdDeck = [...greenStagesThree, ...blueStagesThree, ...brownStagesThree];
 
-colode = [firstDeck, secondDeck, thirdDeck];
+colode = [thirdDeck, secondDeck, firstDeck];
 //console.log(colode[0]);
 
 
