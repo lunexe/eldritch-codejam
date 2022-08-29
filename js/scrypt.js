@@ -140,8 +140,12 @@ shufflButton.addEventListener('click', () => {
     let arrGreenCards;
     let arrBrownCards;
     let arrBlueCards;
-    let greenLow = [];
-  
+    if (veryLowBtn.classList.contains('active') === true) {
+        currentColode.greenCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'green');
+        currentColode.brownCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'brown');
+        currentColode.blueCards = card.filter(element => element.difficulty === 'easy' || element.difficulty === 'normal' && element.color === 'blue');
+    }
+  console.log(currentColode.greenCards);
     greens.forEach((el, id) => {
         el.textContent = currentAncient[id].greenCards;
         allGreen = allGreen + Number(el.textContent);
@@ -293,7 +297,7 @@ colodeBtn.addEventListener('click', () => {
     }
     lastCard.style.background = `no-repeat center/cover url('${url.cardFace}')`;
     //console.log(url);
-})
+});
 
 
 
