@@ -155,19 +155,21 @@ for (let i = 0; i < allBlue; i++){
     bluesArr.push(...currentColode.blueCards.splice(randomCard, 1));
     
 }
-
+//console.log(bluesArr);
+//console.log(greensArr);
+//console.log(brownsArr);
 let greenStagesOne = [];
 let greenStagesTwo = [];
 let greenStagesThree = [];
 
 for (let i = 0; i < Number(firstGreen.textContent); i++) {
-    greenStagesOne.push(greensArr[i]);
+    greenStagesOne.push(greensArr.pop());
 }
-for (let i = Number(firstGreen.textContent); i < (Number(secondGreen.textContent) + Number(firstGreen.textContent)); i++) {
-    greenStagesTwo.push(greensArr[i]);
+for (let i = 0; i < (Number(secondGreen.textContent)); i++) {
+    greenStagesTwo.push(greensArr.pop());
 }
-for (let i = (Number(secondGreen.textContent) + Number(firstGreen.textContent)); i <= (Number(secondGreen.textContent) + Number(firstGreen.textContent) + Number(thirdGreen.textContent)); i++) {
-    greenStagesThree.push(greensArr[i]);
+for (let i = 0; i <= Number(thirdGreen.textContent); i++) {
+    greenStagesThree.push(greensArr.pop());
 }
 //console.log (greenStagesOne);
 //console.log (greenStagesTwo);
@@ -177,25 +179,25 @@ let blueStagesOne = [];
 let blueStagesTwo = [];
 let blueStagesThree =[];
 for (let i = 0; i < Number(firstBlue.textContent); i++) {
-    blueStagesOne.push(bluesArr[i]);
+    blueStagesOne.push(bluesArr.pop());
 }
-for (let i = Number(firstBlue.textContent); i < (Number(secondBlue.textContent) + Number(firstBlue.textContent)); i++) {
-    blueStagesTwo.push(bluesArr[i]);
+for (let i = 0; i < Number(secondBlue.textContent); i++) {
+    blueStagesTwo.push(bluesArr.pop());
 }
-for (let i = (Number(secondBlue.textContent) + Number(firstBlue.textContent)); i <= (Number(secondBlue.textContent) + Number(firstBlue.textContent) + Number(thirdBlue.textContent)); i++) {
-    blueStagesThree.push(bluesArr[i]);
+for (let i = 0; i <= Number(thirdBlue.textContent); i++) {
+    blueStagesThree.push(bluesArr.pop());
 }
 let brownStagesOne = [];
 let brownStagesTwo = [];
 let brownStagesThree =[];
 for (let i = 0; i < Number(firstBrown.textContent); i++) {
-    brownStagesOne.push(brownsArr[i]);
+    brownStagesOne.push(brownsArr.pop());
 }
-for (let i = Number(firstBrown.textContent); i < (Number(secondBrown.textContent) + Number(firstBrown.textContent)); i++) {
-    brownStagesTwo.push(brownsArr[i]);
+for (let i = 0; i < Number(secondBrown.textContent); i++) {
+    brownStagesTwo.push(brownsArr.pop());
 }
-for (let i = (Number(secondBrown.textContent) + Number(firstBrown.textContent)); i <= (Number(secondBrown.textContent) + Number(firstBrown.textContent) + Number(thirdBrown.textContent)); i++) {
-    brownStagesThree.push(brownsArr[i]);
+for (let i = 0; i <= Number(thirdBrown.textContent); i++) {
+    brownStagesThree.push(brownsArr.pop());
 }
 
 
@@ -205,12 +207,12 @@ let secondDeck = [...greenStagesTwo, ...blueStagesTwo, ...brownStagesTwo];
 let thirdDeck = [...greenStagesThree, ...blueStagesThree, ...brownStagesThree];
 
 colode = [thirdDeck, secondDeck, firstDeck];
-//console.log(colode[0]);
+console.log(colode);
 
 
-//console.log(firstDeck);
-//console.log(secondDeck);
-//console.log(thirdDeck);
+console.log(firstDeck);
+console.log(secondDeck);
+console.log(thirdDeck);
 
 });
 colodeBtn.addEventListener('click', () => {
@@ -225,7 +227,9 @@ colodeBtn.addEventListener('click', () => {
             firstBlue.textContent = `${Number(firstBlue.textContent) - 1}`;
         } else if (url.color === 'brown') {
             firstBrown.textContent = `${Number(firstBrown.textContent) - 1}`;
-        }       
+        } else if (url.color === 'undefined') {
+            console.log('hahahha');
+        }     
     } else if (colode[1].length !== 0) {
         let n = Math.floor(Math.random()*colode[1].length-1);
         url = colode[1][n];
